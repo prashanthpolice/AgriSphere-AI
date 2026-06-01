@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "AgriFlow | Digital Agriculture Commerce & Intelligence",
-  description: "A scalable full-stack AgriTech platform for crop disease detection, agricultural intelligence, and marketplace trading.",
+  description:
+    "A scalable full-stack AgriTech platform for crop disease detection, agricultural intelligence, and marketplace trading.",
 };
 
 export default function RootLayout({
@@ -17,8 +19,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} min-h-screen bg-neutral-950 text-neutral-50 selection:bg-agri-green-500/30`}>
+      <body
+        className={`${inter.className} min-h-screen bg-neutral-950 text-neutral-50 selection:bg-agri-green-500/30`}
+      >
         <Providers>
+          {/* ADD THIS LINE */}
+          <div style={{ position: "fixed", top: 20, right: 20, zIndex: 9999 }}>
+            <LanguageSwitcher />
+          </div>
           {children}
         </Providers>
       </body>

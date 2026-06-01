@@ -3,8 +3,11 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, Leaf, TrendingUp, ShieldCheck } from 'lucide-react';
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
+  const { t } = useTranslation();
+
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-neutral-950">
       {/* Background gradients */}
@@ -23,7 +26,7 @@ export default function Home() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
           </span>
-          AgriFlow Beta is Live
+          {t("hero.live")}
         </motion.div>
 
         <motion.h1
@@ -32,8 +35,8 @@ export default function Home() {
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
           className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6"
         >
-          Digital Agriculture <br className="hidden md:block" />
-          <span className="gradient-text">Intelligence & Commerce</span>
+          {t("hero.title1")} <br className="hidden md:block" />
+          <span className="gradient-text">{t("hero.title2")}</span>
         </motion.h1>
 
         <motion.p
@@ -42,7 +45,7 @@ export default function Home() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="text-lg md:text-xl text-neutral-400 max-w-2xl mb-10"
         >
-          Empowering farmers and buyers through AI-driven disease detection, precise yield forecasting, and a transparent, real-time marketplace.
+          {t("hero.description")}
         </motion.p>
 
         <motion.div
@@ -52,12 +55,12 @@ export default function Home() {
           className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
         >
           <Link href="/auth/signup" className="group relative inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-neutral-950 font-bold py-3 px-8 rounded-full transition-all duration-300 overflow-hidden">
-            <span className="relative z-10">Get Started</span>
+            <span className="relative z-10">{t("hero.getStarted")}</span>
             <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
           </Link>
           <Link href="/dashboard/market" className="inline-flex items-center justify-center gap-2 bg-neutral-800 hover:bg-neutral-700 text-white font-medium py-3 px-8 rounded-full border border-neutral-700 transition-colors">
-            Explore Market
+            {t("hero.exploreMarket")}
           </Link>
         </motion.div>
       </div>
@@ -71,9 +74,9 @@ export default function Home() {
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { icon: Leaf, title: "AI Disease Diagnosis", desc: "Instantly detect crop diseases from photos using our advanced Deep Learning models." },
-            { icon: TrendingUp, title: "Yield Analytics", desc: "Data-driven historical analytics and future crop yield predictions tailored to your region." },
-            { icon: ShieldCheck, title: "Secure Marketplace", desc: "Direct farmer-to-buyer transactions with secure Razorpay integration and real-time alerts." }
+            { icon: Leaf, title: t("features.aiDisease.title"), desc: t("features.aiDisease.desc") },
+            { icon: TrendingUp, title: t("features.yieldAnalytics.title"), desc: t("features.yieldAnalytics.desc") },
+            { icon: ShieldCheck, title: t("features.secureMarketplace.title"), desc: t("features.secureMarketplace.desc") }
           ].map((feature, i) => (
             <div key={i} className="glass-panel p-6 rounded-2xl hover:bg-white/5 transition-colors group">
               <div className="w-12 h-12 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
